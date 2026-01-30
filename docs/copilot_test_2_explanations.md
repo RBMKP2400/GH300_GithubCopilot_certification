@@ -1383,7 +1383,7 @@ prompting improves the relevance of model responses by demonstrating how the tas
 performed. The model learns patterns from the provided examples, enhancing accuracy for
 similar tasks.
 
-![](comparison.png)
+![](./imgs/comparison.png)
 
 **Option A is INCORRECT
 because:** Zero-shot prompting works well after a model has been
