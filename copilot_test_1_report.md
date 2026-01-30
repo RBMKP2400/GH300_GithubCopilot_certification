@@ -1,3 +1,33 @@
+# Test Report
+
+Generated (Europe/Madrid): 2026-01-30 12:46:47+0100
+
+## Summary
+
+| Metric | Value |
+| --- | ---: |
+| Result | FAIL — 0.0% (0/50) |
+| Total questions | 50 |
+| Graded questions | 50 |
+| Answered | 0 |
+| Unanswered | 50 |
+| Total correct | 0 |
+| Total incorrect | 0 |
+
+## By Domain
+
+| Domain | Total | Correct | Incorrect questions | Unanswered questions |
+| --- | ---: | ---: | --- | --- |
+| Developer use cases for AI | 5 | 0 | - | 34, 35, 36, 37, 38 |
+| GitHub Copilot plans and features | 14 | 0 | - | 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 |
+| How GitHub Copilot works and handles data | 9 | 0 | - | 20, 21, 22, 23, 24, 25, 26, 27, 28 |
+| Privacy fundamentals and content exclusions | 7 | 0 | - | 44, 45, 46, 47, 48, 49, 50 |
+| Prompt Crafting and Prompt Engineering | 5 | 0 | - | 29, 30, 31, 32, 33 |
+| Responsible AI | 5 | 0 | - | 1, 2, 3, 4, 5 |
+| Testing with GitHub Copilot | 5 | 0 | - | 39, 40, 41, 42, 43 |
+
+## Explanations
+
 ### Domain: Responsible AI
 ### Question 1
 **Correct Answer: B**
@@ -131,7 +161,7 @@ respects the user's privacy.
 welcomes people from all groups of society without considering any kind of
 differentiators.
 
-**![](./imgs/fairness.png)**
+**![](fairness.png)**
 
 **References:**
 

@@ -659,7 +659,7 @@ Copilot for Individuals and Business; it does not require a GitHub Enterprise pl
 command in Copilot Chat. It tells the model to try again with a different suggestion
 while staying in the same context.
 
-**![](commands.png)**
+**![](./imgs/commands.png)**
 
 - **Option B is INCORRECT** as GitHub Actions has no connection to
 Copilot Chat suggestions or IDE-level code generation.
