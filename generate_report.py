@@ -102,6 +102,7 @@ def compute_stats(
 
     overall = {
         "total": 0,
+        "graded_total": 0,  # questions present in BOTH questions.md and answers.md
         "answered": 0,
         "unanswered": 0,
         "correct": 0,
@@ -125,6 +126,8 @@ def compute_stats(
             overall["missing_in_answers_md"].append(qnum)
             # If it doesn't exist in answers.md, we can’t grade it.
             continue
+
+        overall["graded_total"] += 1
 
         domain = q.domain or "Unknown Domain"
         if domain not in domains:
@@ -158,6 +161,11 @@ def render_report(domains: Dict[str, dict], overall: dict) -> str:
     tz = ZoneInfo("Europe/Madrid") if ZoneInfo else dt.timezone.utc
     timestamp = dt.datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S%z")
 
+    graded_total = int(overall.get("graded_total", 0) or 0)
+    correct = int(overall.get("correct", 0) or 0)
+    pct = (correct / graded_total * 100.0) if graded_total else 0.0
+    result = "PASS" if correct >= 36 else "FAIL"
+
     lines: List[str] = []
     lines.append(f"# Test Report")
     lines.append(f"")
@@ -168,7 +176,9 @@ def render_report(domains: Dict[str, dict], overall: dict) -> str:
     lines.append("")
     lines.append("| Metric | Value |")
     lines.append("| --- | ---: |")
+    lines.append(f"| Result | {result} — {pct:.1f}% ({correct}/{graded_total}) |")
     lines.append(f"| Total questions | {overall['total']} |")
+    lines.append(f"| Graded questions | {graded_total} |")
     lines.append(f"| Answered | {overall['answered']} |")
     lines.append(f"| Unanswered | {overall['unanswered']} |")
     lines.append(f"| Total correct | {overall['correct']} |")
@@ -257,12 +267,7 @@ def main() -> int:
     report = render_report(domains, overall)
 
     explanations_md = explanations_path.read_text(encoding="utf-8")
-    combined = (
-        report.rstrip()
-        + "\n\n## Explanations\n\n"
-        + explanations_md.strip()
-        + "\n"
-    )
+    combined = report.rstrip() + "\n\n## Explanations\n\n" + explanations_md.strip() + "\n"
     out_path.write_text(combined, encoding="utf-8")
 
     print(f"Wrote {out_path}")

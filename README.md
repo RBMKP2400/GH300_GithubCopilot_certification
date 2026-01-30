@@ -7,18 +7,21 @@ You take each test by marking your selected answer(s) in the questions Markdown 
 ## How to Take a Test
 
 1. Open one of the question files:
-	- `copilot_test_1_questions.md`
-	- `copilot_test_2_questions.md`
+    - `copilot_test_1_questions.md`
+    - `copilot_test_2_questions.md`
 
 2. For each question, mark the correct option(s) by changing the checkbox to an `x`:
-	- Example: change `#### [ ] B. ...` to `#### [x] B. ...`
+    - Example: change `#### [ ] B. ...` to `#### [x] B. ...`
 
-	Notes:
-	- Some questions are multi-select; mark **all** correct options.
-	- Upper/lowercase both work (`x` or `X`).
+    Notes:
+    - Some questions are multi-select; mark **all** correct options.
+    - Upper/lowercase both work (`x` or `X`).
 
 3. Save the file after you finish the test:
-	- In VS Code: `Ctrl + S`
+    - In VS Code: `Ctrl + S`
+
+4. Timing (recommended)
+    - The official exam time limit is **100 minutes**, so it’s recommended to **set a 100-minute timer** and complete the test under realistic conditions.
 
 ## Generate the Report
 
@@ -43,6 +46,10 @@ The report includes:
 - Overall totals (answered, unanswered, correct, incorrect)
 - A breakdown **by domain**, including which questions were incorrect/unanswered
 - An appended `## Explanations` section containing the full explanations for each question
+
+### Validation condition (PASS/FAIL)
+
+The report shows **PASS** if you have **36 or more correct answers** (≥ **72%**). Otherwise, it shows **FAIL**.
 
 ## Files Layout (Reference)
 
