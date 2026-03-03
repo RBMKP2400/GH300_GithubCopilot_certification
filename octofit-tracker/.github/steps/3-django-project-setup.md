@@ -6,7 +6,7 @@
 In this step, we will accomplish the following:
 
 - Set up the octofit_db MongoDB database structure.
-- Update the octofit-tracker/backend/octofit_tracker app files:
+- Update the octofit-tracker/backend/src app files:
   - settings, models, serializers, urls, views, tests, and admin files.
 - Populate the octofit_db database with test data.
 - Verify the test data is populated in the octofit_db database.
@@ -70,7 +70,7 @@ Now let's create a prompt file of our own that we can share with other staff to 
 >
 > # Django App Updates
 >
-> - All Django project files are in the `octofit-tracker/backend/octofit_tracker` directory.
+> - All Django project files are in the `octofit-tracker/backend/src` directory.
 >
 > 1. Update `settings.py` for MongoDB connection and CORS.
 > 2. Update `models.py`, `serializers.py`, `urls.py`, `views.py`, `tests.py`, and `admin.py` to support users, teams, activities, leaderboard, and workouts collections.
@@ -112,8 +112,8 @@ Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent
 If you don't get feedback, here are some things to check:
 
 - Make sure your commit changes were made for the following files to the branch `build-octofit-app` and pushed/synchronized to GitHub:
-  - `octofit-tracker/backend/octofit_tracker/settings.py`
-  - `octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py`
+  - `octofit-tracker/backend/src/settings.py`
+  - `octofit-tracker/backend/src/management/commands/populate_db.py`
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
 
 </details>

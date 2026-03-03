@@ -34,7 +34,7 @@ The section defines the OctoFit Tracker App's structure
 octofit-tracker/
 ├── backend/
 │   ├── venv/
-|   ├── octofit_tracker/
+|   ├── src/
 └── frontend/
 ```
 
@@ -97,3 +97,15 @@ pip install -r backend/requirements.txt
 - mongodb-org is the official MongoDB package
 - mongosh is the official client tool
 - Always use Django's ORM, not direct MongoDB scripts to create the database structure and data
+
+## Port visibility in GitHub Codespaces
+
+After starting the Django and React servers, always force port visibility to public:
+
+```bash
+gh cs ports visibility 8000:public -c "$CODESPACE_NAME"
+gh cs ports visibility 3000:public -c "$CODESPACE_NAME"
+```
+
+Without this, the browser will receive a `302` redirect to a GitHub sign-in page instead of
+the API response, causing `Failed to fetch` errors in the React frontend.

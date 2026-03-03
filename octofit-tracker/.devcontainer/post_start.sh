@@ -13,8 +13,8 @@ die() {
 
 # Port visibility setup
 echo "Setting port visibility..."
-gh cs ports visibility 8000:public -c "$CODESPACE_NAME" || die "Failed to set 8000 public"
-gh cs ports visibility 3000:public -c "$CODESPACE_NAME" || die "Failed to set 3000 public"
+gh cs ports visibility 8000:public -c "$CODESPACE_NAME" 2>/dev/null && echo "Port 8000 set to public" || echo "Warning: could not set port 8000 visibility (will be set when port is active)"
+gh cs ports visibility 3000:public -c "$CODESPACE_NAME" 2>/dev/null && echo "Port 3000 set to public" || echo "Warning: could not set port 3000 visibility (will be set when port is active)"
 
 echo "Preparing MongoDB data dir..."
 sudo mkdir -p /data/db || die "mkdir failed"

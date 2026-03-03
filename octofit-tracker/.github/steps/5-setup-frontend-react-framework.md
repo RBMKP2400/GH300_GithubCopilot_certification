@@ -35,10 +35,13 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > ensure everything is created in the `octofit-tracker/frontend` directory by using `--prefix`
 >
 > 1. Make sure the the octofit-tracker/frontend directory exists.
-> 2. create the react app
+> 2. Create the react app using `npx --yes create-react-app` (the --yes flag is required to
+>    skip the interactive confirmation prompt).
 > 3. Install react, bootstrap, and react-router-dom
 > 4. Import bootstrap css in the src/index.js file.
 > 5. Don't change .gitignore file
+> 6. Add `"proxy": "http://localhost:8000"` to frontend/package.json so the React dev server
+>    forwards /api/* requests to Django, avoiding CORS issues in Codespaces.
 >```
 
 ### :keyboard: Activity: Update the octofit-tracker frontend React components
@@ -56,11 +59,18 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 >   - src/components/Teams.js
 >   - src/components/Users.js
 >   - src/components/Workouts.js
-> - In each component replace the fetch url with the codespace url
->   https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/[component]/
->   for the Django rest framework backend.
->   make sure all components are pulling data from the REST api endpoint
->   for display in the REACT frontend
+> - In App.js use `HashRouter` (not `BrowserRouter`) from react-router-dom. In GitHub Codespaces
+>   the React app runs behind a reverse proxy, so `BrowserRouter` causes navigation to fail.
+>   `HashRouter` handles routing entirely in the browser via the URL hash (#/route).
+> - In each component define the API URL using the CODESPACE environment variable:
+>   ```js
+>   const CODESPACE_NAME = process.env.REACT_APP_CODESPACE_NAME;
+>   const API_URL = CODESPACE_NAME
+>     ? `https://${CODESPACE_NAME}-8000.app.github.dev/api/[component]`
+>     : '/api/[component]';
+>   ```
+>   The fallback MUST be a relative path `/api/[component]` (not `http://localhost:8000/...`)
+>   so the React proxy forwards it to Django when the Codespace URL is not available.
 > - Make sure to use the correct port and protocol http or https.
 > - Update src/App.js to include the main navigation for all components.
 > - Make sure react-router-dom is used for the navigation menu.
@@ -150,3 +160,13 @@ If you don't get feedback, here are some things to check:
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
 
 </details>
+
+> [!TIP]
+> **Getting "Failed to fetch" errors in the browser?**
+> This is a GitHub Codespaces port visibility issue. Fix it by running in the terminal:
+> ```bash
+> gh cs ports visibility 8000:public -c "$CODESPACE_NAME"
+> gh cs ports visibility 3000:public -c "$CODESPACE_NAME"
+> ```
+> If it still fails, make sure `frontend/package.json` has `"proxy": "http://localhost:8000"` and
+> that the API URL fallback in each component uses `/api/[endpoint]` (relative path), not `http://localhost:8000/api/[endpoint]`.

@@ -26,7 +26,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > ```prompt
 > Let's setup codespace for the URL, start the server via VS Code launch.json, and test the API.
 > 
-> - All Django project files are in the `octofit-tracker/backend/octofit_tracker` directory.
+> - All Django project files are in the `octofit-tracker/backend/src` directory.
 > - Only update urls in `settings.py` and `urls.py`
 > - REST api endpoint format https://$CODESPACE_NAME-8000.app.github.dev/api/[component]/
 > - example full url: https://$CODESPACE_NAME-8000.app.github.dev/api/activities/
@@ -73,8 +73,8 @@ Once you click `Continue` it should look similar the following with your codespa
 If you don't get feedback, here are some things to check:
 
 - Make sure your commit changes were made for the following files to the branch `build-octofit-app` and pushed/synchronized to GitHub:
-  - `octofit-tracker/backend/octofit_tracker/settings.py`
-  - `octofit-tracker/backend/octofit_tracker/views.py`
+  - `octofit-tracker/backend/src/settings.py`
+  - `octofit-tracker/backend/src/views.py`
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
 
 </details>

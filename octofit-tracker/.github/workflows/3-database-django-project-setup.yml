@@ -5,7 +5,7 @@ on:
     branches:
       - "build-octofit-app"
     paths:
-      - "backend/octofit_tracker/**"
+      - "backend/src/**"
 
 permissions:
   contents: read
@@ -62,7 +62,7 @@ jobs:
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: backend/octofit_tracker/settings.py
+          text-file: backend/src/settings.py
           keyphrase: 'octofit_db'
           minimum-occurrences: 1
           case-sensitive: false
@@ -72,7 +72,7 @@ jobs:
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: backend/octofit_tracker/settings.py
+          text-file: backend/src/settings.py
           keyphrase: 'djongo'
           minimum-occurrences: 2
           case-sensitive: false
@@ -82,7 +82,7 @@ jobs:
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: backend/octofit_tracker/management/commands/populate_db.py
+          text-file: backend/src/management/commands/populate_db.py
           keyphrase: 'Populate the octofit_db database with test data'
           minimum-occurrences: 1
           case-sensitive: false
