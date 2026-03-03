@@ -5,11 +5,11 @@ description: 'Setup, configure, and populate the octofit_db database with test d
 ---
 
 # Environment Setup
-- Use the existing Python virtual environment in `octofit-tracker/backend/venv`.
+- Use the existing Python virtual environment in `backend/venv`.
 - Do not create a new Python virtual environment.
-- Activate with: `source octofit-tracker/backend/venv/bin/activate`
+- Activate with: `source backend/venv/bin/activate`
 - `mongodb-org-shell` is already installed; use `mongosh` to interact with MongoDB.
-- The Django project is in `octofit-tracker/backend/octofit_tracker`.
+- The Django project is in `backend/octofit_tracker`.
 
 # Database Initialization & Population
 1. Ensure the MongoDB service is running.
@@ -20,7 +20,7 @@ description: 'Setup, configure, and populate the octofit_db database with test d
 6. Run `makemigrations` and `migrate` in the Python virtual environment.
 7. Initialize the `octofit_db` database and create collections for users, teams, activities, leaderboard, and workouts.
 8. Ensure a unique index on the `email` field for the user collection (e.g., `db.users.createIndex({ "email": 1 }, { unique: true })`).
-9. Populate the database with test data for all collections using the Django management command in `octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py` 
+9. Populate the database with test data for all collections using the Django management command in `backend/octofit_tracker/management/commands/populate_db.py`
   a. help message: 'Populate the octofit_db database with test data'.
   b. Django ORM for data deletion and insertion
   c. Make the sample data super heroes and use team marvel and team dc.

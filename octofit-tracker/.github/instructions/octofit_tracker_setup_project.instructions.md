@@ -43,14 +43,14 @@ octofit-tracker/
 - To create the virtual environment, run the following command:
   
   ```bash
-  python3 -m venv octofit-tracker/backend/venv
+  python3 -m venv backend/venv
   ```
 
 ## OctoFit Tracker Python required packages
 
-### Create file octofit-tracker/backend/requirements.txt
+### Create file backend/requirements.txt
 
-- add the following to octofit-tracker/backend/requirements.txt
+- add the following to backend/requirements.txt
 - Install the Python packages below only for our OctoFit Tracker project
 
 ```text
@@ -87,8 +87,8 @@ Create a requirements.txt with the following Python required packages:
 Install the requirements that we created in requirements.txt.
 
 ```bash
-source octofit-tracker/backend/venv/bin/activate 
-pip install -r octofit-tracker/backend/requirements.txt
+source backend/venv/bin/activate 
+pip install -r backend/requirements.txt
 ```
 
 ## mongodb-org service and data creation

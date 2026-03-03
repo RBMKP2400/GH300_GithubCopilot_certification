@@ -1,5 +1,5 @@
 ---
-applyTo: "octofit-tracker/backend/**"
+applyTo: "backend/**"
 ---
 # Octofit-tracker Fitness App Django backend Guidelines
 

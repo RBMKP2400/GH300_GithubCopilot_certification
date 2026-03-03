@@ -1,6 +1,7 @@
 {
     "name": "OctoFit Tracker App codespace",
     "image": "mcr.microsoft.com/devcontainers/base:jammy",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/octofit-tracker",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/devcontainers/features/github-cli:1": {},
@@ -15,30 +16,35 @@
     "customizations": {
         "vscode": {
         "extensions": [
-            "github.copilot", // GitHub Copilot + Copilot Chat
+            "github.copilot",
+            "github.copilot-chat",
             "markdown-lint.markdownlinter",
-            "ms-python.python", // Python extension
-            "ms-python.vscode-pylance", // Pylance extension for Python
-            "ms-python.debugpy" // Debugpy extension for Python
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "ms-python.debugpy"
         ],
         "settings": {
-            "chat.agent.enabled": true,
+            "chat.agent.enabled": true
         }
     }
     },
     "forwardPorts": [
-        3000, // React default port
-        8000, // Django default port
-        27017 // MongoDB default port
+        3000,
+        8000,
+        27017
     ],
     "portAttributes": {
-      "3000": { // React port attributes
-      "label": "octofit-tracker",
-      "requireLocalPort": true
+      "3000": {
+        "label": "octofit-tracker",
+        "visibility": "public"
       },
-      "8000": { // Django port attributes
-      "label": "octofit-api",
-      "requireLocalPort": true
+      "8000": {
+        "label": "octofit-api",
+        "visibility": "public"
+      },
+      "27017": {
+        "label": "mongodb",
+        "visibility": "private"
       }
     }
 }
