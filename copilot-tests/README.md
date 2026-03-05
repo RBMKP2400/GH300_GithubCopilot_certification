@@ -1,60 +1,85 @@
-# GH-300 GitHub Copilot — Practice Tests
+# GH-300 — Simulacros de examen (copilot-tests)
 
-This repository contains **two simulation preparatory tests** for the **GH-300 (GitHub Copilot) certification**.
+Módulo de práctica teórica para la certificación GH-300, con dos simulacros completos, clave de respuestas, explicaciones y generación automática de reporte.
 
-You take each test by marking your selected answer(s) in the questions Markdown file, and then generating a grading report that summarizes your results **per domain** and appends the full **explanations**.
+---
 
-## How to Take a Test
+## Qué incluye
 
-1. Open one of the question files:
-    - `copilot_test_1_questions.md`
-    - `copilot_test_2_questions.md`
+- 2 tests de práctica:
+  - `copilot_test_1_questions.md`
+  - `copilot_test_2_questions.md`
+- Banco de respuestas y explicaciones en `docs/`
+- Script de evaluación: `generate_report.py`
+- Reporte final por dominio con estado PASS/FAIL
 
-2. For each question, mark the correct option(s) by changing the checkbox to an `x`:
-    - Example: change `#### [ ] B. ...` to `#### [x] B. ...`
+---
 
-    Notes:
-    - Some questions are multi-select; mark **all** correct options.
-    - Upper/lowercase both work (`x` or `X`).
+## Flujo de uso recomendado
 
-3. Save the file after you finish the test:
-    - In VS Code: `Ctrl + S`
+1. Abre un archivo de preguntas y responde marcando opciones:
+   - cambia `#### [ ]` por `#### [x]`
+2. Guarda el archivo.
+3. Ejecuta el generador de reporte.
+4. Revisa aciertos/errores por dominio y repasa explicaciones.
 
-4. Timing (recommended)
-    - The official exam time limit is **100 minutes**, so it’s recommended to **set a 100-minute timer** and complete the test under realistic conditions.
+> Recomendación de simulación real: completar cada test en 100 minutos.
 
-## Generate the Report
+---
 
-After you finish marking answers, run the report generator with the test number (1 or 2):
+## Comandos
 
-```bash
-python3 generate_report.py 1
-```
-
-or:
+Desde la carpeta `copilot-tests/`:
 
 ```bash
-python3 generate_report.py 2
+python generate_report.py 1
+python generate_report.py 2
 ```
 
-This will generate:
+También puede ejecutarse desde la raíz del repositorio:
 
-- `copilot_test_1_report.md` (or `copilot_test_2_report.md`) in the repository root.
+```bash
+python copilot-tests/generate_report.py 1
+python copilot-tests/generate_report.py 2
+```
 
-The report includes:
+---
 
-- Overall totals (answered, unanswered, correct, incorrect)
-- A breakdown **by domain**, including which questions were incorrect/unanswered
-- An appended `## Explanations` section containing the full explanations for each question
+## Salida generada
 
-### Validation condition (PASS/FAIL)
+Para cada test se crea:
 
-The report shows **PASS** if you have **36 or more correct answers** (≥ **72%**). Otherwise, it shows **FAIL**.
+- `copilot_test_1_report.md` o `copilot_test_2_report.md` (en `copilot-tests/`)
 
-## Files Layout (Reference)
+El reporte contiene:
 
-- Questions (what you edit): `copilot_test_X_questions.md` (repo root)
-- Answer keys: `docs/copilot_test_X_answers.md`
-- Explanations: `docs/copilot_test_X_explanations.md`
-- Generated report: `copilot_test_X_report.md` (repo root)
+- Resumen global (respondidas, no respondidas, correctas, incorrectas)
+- Porcentaje final y resultado PASS/FAIL
+- Desglose por dominio
+- Preguntas incorrectas/no respondidas por dominio
+- Sección final con explicaciones completas
+
+---
+
+## Criterio de aprobación
+
+- PASS: 36 o más respuestas correctas (≥ 72%)
+- FAIL: menos de 36 respuestas correctas
+
+---
+
+## Estructura de archivos
+
+- Preguntas: `copilot_test_X_questions.md`
+- Respuestas: `docs/copilot_test_X_answers.md`
+- Explicaciones: `docs/copilot_test_X_explanations.md`
+- Reporte generado: `copilot_test_X_report.md`
+
+---
+
+## Notas útiles
+
+- Se acepta `x` o `X` en los checkboxes.
+- Las preguntas multi-select requieren marcar todas las opciones correctas.
+- Si hay diferencias entre archivos de preguntas/respuestas, el script añade diagnósticos en el reporte.
 

@@ -1,151 +1,95 @@
-# GH-300 GitHub Copilot Certification — Study Repository
+# GH-300 GitHub Copilot Certification — Repositorio de estudio
 
-<p align="center">
-  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="80" alt="GitHub"/>
-</p>
-
-This repository is a **complete preparation toolkit for the GH-300 GitHub Copilot certification exam**.  
-It contains two independent modules that together cover both the theoretical and practical sides of the exam.
+Repositorio integral para preparar la certificación **GH-300 (GitHub Copilot)** con práctica teórica, ejercicios guiados y proyecto full-stack asistido con Copilot.
 
 ---
 
-## 📁 Repository Structure
+## 📁 Estructura real del repositorio
 
 ```
 GH300_GithubCopilot_certification/
-│
-├── copilot-tests/          ← 📝 Exam simulation tests (theory)
-│   ├── copilot_test_1_questions.md
-│   ├── copilot_test_2_questions.md
-│   ├── generate_report.py
-│   └── README.md           ← Full instructions for taking the tests
-│
-└── octofit-tracker/        ← 🏋️ Hands-on coding project (practical)
-    ├── README.md            ← Full instructions for building the app
-    ├── backend/             ← Django REST API + MongoDB
-    ├── frontend/            ← React + Bootstrap SPA
-    └── .github/
-        ├── instructions/    ← Copilot Agent Mode instruction files
-        ├── prompts/         ← Reusable prompt files
-        ├── steps/           ← Step-by-step guided exercise
-        └── workflows/       ← GitHub Actions validation workflows
+├── config-copilot-projects/                  # Plantilla profesional de .github/ (CI/CD, templates, CODEOWNERS)
+├── copilot-tests/                            # Simulacros de examen GH-300 + generador de reportes
+├── GitHub Copilot Fundamentals/
+│   ├── Part 1/
+│   │   ├── pj1-intro/                        # Getting Started with GitHub Copilot
+│   │   ├── pj2-introduction-to-git-main/     # Introduction to Git
+│   │   └── pj3-AccelerateDevGHCopilot/       # Library App (.NET, arquitectura limpia)
+│   └── Part 2/
+│       └── octofit-tracker/                  # Proyecto práctico Django + React + MongoDB
+└── README.md
 ```
 
 ---
 
-## 📝 Module 1 — Exam Simulation Tests (`copilot-tests/`)
+## 🎯 Objetivo de cada bloque
 
-Two full-length practice tests that simulate the GH-300 exam format.
+### 1) `copilot-tests/` — Simulación de examen (teoría)
+- 2 tests completos (`copilot_test_1_questions.md`, `copilot_test_2_questions.md`)
+- Preguntas single/multi-select alineadas a dominios GH-300
+- Corrección automática por dominio con `generate_report.py`
+- Explicaciones completas en `copilot-tests/docs/`
 
-**What you get:**
-- Questions mapped to the official GH-300 exam domains
-- Multi-select and single-select question types
-- Automatic grading with domain-by-domain score breakdown
-- Detailed explanations for every answer
-
-**Quick start:**
+**Uso rápido:**
 ```bash
-# 1. Open a question file and mark your answers (change [ ] to [x])
-code copilot-tests/copilot_test_1_questions.md
-
-# 2. Generate the graded report
 python copilot-tests/generate_report.py 1
+python copilot-tests/generate_report.py 2
 ```
 
-> 📖 See [`copilot-tests/README.md`](copilot-tests/README.md) for full instructions.
+> El reporte se genera dentro de `copilot-tests/` como `copilot_test_1_report.md` o `copilot_test_2_report.md`.
+
+Más detalle: [copilot-tests/README.md](copilot-tests/README.md)
+
+### 2) `config-copilot-projects/` — Acelerador de configuración `.github/`
+- Scripts para generar estructura profesional de GitHub Actions y governance.
+- Incluye workflows de CI, matrix, checks de PR, templates de issue/PR y `CODEOWNERS`.
+- Script principal: `config-copilot-projects/scripts/setup-github-structure.sh`
+
+Más detalle: [config-copilot-projects/README.md](config-copilot-projects/README.md)
+
+### 3) `GitHub Copilot Fundamentals/Part 1/` — Laboratorios base
+- `pj1-intro`: introducción práctica a GitHub Copilot.
+- `pj2-introduction-to-git-main`: fundamentos de Git para flujo de trabajo diario.
+- `pj3-AccelerateDevGHCopilot`: aplicación de biblioteca en .NET (dominio, infraestructura, consola, tests).
+
+### 4) `GitHub Copilot Fundamentals/Part 2/octofit-tracker/` — Proyecto práctico GH-300
+- Backend: Django + Django REST Framework + MongoDB (djongo)
+- Frontend: React + Bootstrap + `HashRouter`
+- Material para Agent Mode en `.github/prompts/`, `.github/steps/` e `.github/instructions/`
+
+Más detalle: [GitHub Copilot Fundamentals/Part 2/octofit-tracker/README.md](GitHub%20Copilot%20Fundamentals/Part%202/octofit-tracker/README.md)
 
 ---
 
-## 🏋️ Module 2 — OctoFit Tracker App (`octofit-tracker/`)
+## 🚀 Ruta recomendada de estudio (GH-300)
 
-A hands-on coding exercise that builds a full fitness tracking application using **GitHub Copilot Agent Mode** — demonstrating the AI-assisted development workflow tested in the GH-300 exam.
-
-**What you build:**
-
-| Layer | Technology | Purpose |
-|---|---|---|
-| Backend API | Django 4 + Django REST Framework | REST endpoints for users, teams, activities, leaderboard, workouts |
-| Database | MongoDB via djongo | NoSQL persistence |
-| Frontend | React 19 + Bootstrap 5 | SPA with navigation and data display |
-
-**Two ways to build it:**
-
-### Option A — Automated with GitHub Copilot (recommended for exam practice)
-Open a Codespace, then use Copilot Agent Mode with the provided prompt files:
-```
-.github/prompts/create-django-project.prompt.md
-.github/prompts/init-populate-octofit_db.prompt.md
-```
-Follow the step-by-step guide in [`.github/steps/`](octofit-tracker/.github/steps/).
-
-### Option B — Manual setup
-```bash
-# Backend
-python3 -m venv octofit-tracker/backend/venv
-source octofit-tracker/backend/venv/bin/activate
-pip install -r octofit-tracker/backend/requirements.txt
-cd octofit-tracker/backend
-python manage.py migrate && python manage.py populate_db
-python manage.py runserver 0.0.0.0:8000
-
-# Frontend (separate terminal)
-cd octofit-tracker/frontend
-npm install && npm start
-```
-
-> 📖 See [`octofit-tracker/README.md`](octofit-tracker/README.md) for the full guide including Codespace-specific setup, port configuration, and troubleshooting.
+1. Realiza `copilot_test_1_questions.md` (100 minutos)
+2. Genera reporte y estudia errores por dominio
+3. Completa `octofit-tracker` con Copilot Agent Mode
+4. Refuerza fundamentos con proyectos de `Part 1`
+5. Realiza `copilot_test_2_questions.md` (100 minutos)
+6. Compara resultados antes del examen real
 
 ---
 
-## 🚀 Getting Started
+## ✅ Requisitos sugeridos
 
-### Prerequisites
-- GitHub account with access to Codespaces
-- Basic knowledge of Python, JavaScript, and REST APIs
-
-### Recommended workflow
-
-```
-1. Read this README
-        ↓
-2. Take copilot-tests/ exam 1 (100 min timer)
-   → Review your score and study weak domains
-        ↓
-3. Build the octofit-tracker/ app using Copilot Agent Mode
-   → Practice AI-assisted development workflows
-        ↓
-4. Take copilot-tests/ exam 2 (100 min timer)
-   → Validate improvement before the real exam
-```
-
-### Open in a Codespace
-Click the button below to launch a pre-configured dev environment with Python, Node.js, and MongoDB ready to use:
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/RBMKP2400/GH300_GithubCopilot_certification)
+- **General**: Git, VS Code, cuenta GitHub
+- **Python**: 3.10+ (para scripts/tests/backend Django)
+- **Node.js**: 18+ (frontend React)
+- **.NET SDK**: para `pj3-AccelerateDevGHCopilot`
+- **MongoDB**: requerido para `octofit-tracker/backend`
 
 ---
 
-## 📚 GH-300 Exam Domains Covered
-
-| Domain | copilot-tests | octofit-tracker |
-|---|:---:|:---:|
-| GitHub Copilot fundamentals | ✅ | |
-| Copilot in the IDE (code completions, chat) | ✅ | ✅ |
-| Copilot Agent Mode & prompt engineering | ✅ | ✅ |
-| Copilot on GitHub.com (PR summaries, reviews) | ✅ | |
-| Responsible AI / content exclusions / policies | ✅ | |
-| GitHub Copilot for business administration | ✅ | |
-
----
-
-## 🔗 Useful Resources
+## 🔗 Recursos útiles
 
 - [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
 - [GH-300 Exam Study Guide](https://examregistration.github.com/certification/GH-300)
 - [GitHub Copilot Agent Mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode)
 - [Django REST Framework](https://www.django-rest-framework.org/)
-- [React Documentation](https://react.dev/)
+- [React](https://react.dev/)
 
 ---
 
-&copy; 2025 GitHub &bull; [MIT License](https://gh.io/mit)
+Licencias: revisa los archivos `LICENSE` disponibles en cada módulo/proyecto.
