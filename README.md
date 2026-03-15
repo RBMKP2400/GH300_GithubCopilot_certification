@@ -17,6 +17,7 @@ GH300_GithubCopilot_certification/
 │   │   └── pj3-AccelerateDevGHCopilot/       # Library App (.NET, arquitectura limpia)
 │   └── Part 2/
 │       └── octofit-tracker/                  # Proyecto práctico Django + React + MongoDB
+├── poc-parallel-agents/                      # PoC de orquestación de agentes y validación local tipo CI
 └── README.md
 ```
 
@@ -59,6 +60,13 @@ Más detalle: [config-copilot-projects/README.md](config-copilot-projects/README
 
 Más detalle: [GitHub Copilot Fundamentals/Part 2/octofit-tracker/README.md](GitHub%20Copilot%20Fundamentals/Part%202/octofit-tracker/README.md)
 
+### 5) `poc-parallel-agents/` — Orquestación de agentes en paralelo (local)
+- Flujo de trabajo con dos ramas/agentes (`feature/agent-1` y `feature/agent-2`) en worktrees aislados.
+- Integración automática con validaciones locales tipo CI: `flake8`, `vulture`, `pytest`, `bandit`.
+- Scripts clave: `setup-agent-worktrees.ps1` y `run-vibe-integration.ps1`.
+
+Más detalle: [poc-parallel-agents/README.md](poc-parallel-agents/README.md)
+
 ---
 
 ## 🚀 Ruta recomendada de estudio (GH-300)
@@ -66,9 +74,10 @@ Más detalle: [GitHub Copilot Fundamentals/Part 2/octofit-tracker/README.md](Git
 1. Realiza `copilot_test_1_questions.md` (100 minutos)
 2. Genera reporte y estudia errores por dominio
 3. Completa `octofit-tracker` con Copilot Agent Mode
-4. Refuerza fundamentos con proyectos de `Part 1`
-5. Realiza `copilot_test_2_questions.md` (100 minutos)
-6. Compara resultados antes del examen real
+4. Practica integración paralela con `poc-parallel-agents`
+5. Refuerza fundamentos con proyectos de `Part 1`
+6. Realiza `copilot_test_2_questions.md` (100 minutos)
+7. Compara resultados antes del examen real
 
 ---
 
