@@ -6,9 +6,10 @@ Módulo de práctica teórica para la certificación GH-300, con dos simulacros 
 
 ## Qué incluye
 
-- 2 tests de práctica:
+- 3 tests de práctica:
   - `copilot_test_1_questions.md`
   - `copilot_test_2_questions.md`
+  - `copilot_test_3_questions.md`
 - Banco de respuestas y explicaciones en `docs/`
 - Script de evaluación: `generate_report.py`
 - Reporte final por dominio con estado PASS/FAIL
@@ -34,6 +35,7 @@ Desde la carpeta `copilot-tests/`:
 ```bash
 python generate_report.py 1
 python generate_report.py 2
+python generate_report.py 3
 ```
 
 También puede ejecutarse desde la raíz del repositorio:
@@ -41,6 +43,7 @@ También puede ejecutarse desde la raíz del repositorio:
 ```bash
 python copilot-tests/generate_report.py 1
 python copilot-tests/generate_report.py 2
+python copilot-tests/generate_report.py 3
 ```
 
 ---
@@ -49,7 +52,7 @@ python copilot-tests/generate_report.py 2
 
 Para cada test se crea:
 
-- `copilot_test_1_report.md` o `copilot_test_2_report.md` (en `copilot-tests/`)
+- `copilot_test_1_report.md` o `copilot_test_2_report.md` o `copilot_test_3_report.md` (en `copilot-tests/`)
 
 El reporte contiene:
 

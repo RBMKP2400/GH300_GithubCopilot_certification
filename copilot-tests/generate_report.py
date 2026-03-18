@@ -227,8 +227,8 @@ def main() -> int:
     parser.add_argument(
         "test_number",
         type=int,
-        choices=[1, 2],
-        help="Which test to grade (1 or 2).",
+        choices=[1, 2, 3],
+        help="Which test to grade (1, 2, or 3).",
     )
 
     args = parser.parse_args()
